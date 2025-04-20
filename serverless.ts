@@ -1,13 +1,13 @@
-import { helloFunctions } from './src/functions/hello';
+import { productsFunctions } from './src/functions/products';
 import type { AWS } from '@serverless/typescript';
 
 const serverlessConfiguration: AWS = {
-  service: "aws-serverless-typescript-api",
+  service: "demo-redis-api",
   frameworkVersion: "3",
   plugins: ["serverless-dotenv-plugin", "serverless-plugin-typescript", "serverless-offline"],
   provider: {
     name: "aws",
-    runtime: "nodejs18.x",
+    runtime: "nodejs20.x",
     region: "us-east-1",
     apiGateway: {
       minimumCompressionSize: 1024,
@@ -22,7 +22,7 @@ const serverlessConfiguration: AWS = {
     },
   },
   // import the function via paths
-  functions: { ...helloFunctions },
+  functions: { ...productsFunctions },
   package: { individually: true },
   custom: {},
 };
